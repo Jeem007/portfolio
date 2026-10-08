@@ -39,7 +39,7 @@ export default function Education() {
               <li
                 key={e.degree}
                 data-edu-row
-                className="group grid grid-cols-[4rem_1fr] gap-x-6 gap-y-1 border-b border-line py-6 transition-colors duration-500 hover:bg-white/[0.015] sm:grid-cols-[5rem_1fr_auto] sm:items-baseline md:py-8"
+                className="group grid grid-cols-[4rem_1fr] gap-x-6 gap-y-1 border-b border-line py-6 transition-colors duration-500 hover:bg-fg/[0.015] sm:grid-cols-[5rem_1fr_auto] sm:items-baseline md:py-8"
               >
                 <span className="font-mono text-sm text-subtle">{e.year}</span>
                 <div>

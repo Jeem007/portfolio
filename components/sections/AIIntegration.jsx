@@ -30,7 +30,7 @@ function Pipeline() {
               <p className="font-medium tracking-tight">{step.label}</p>
               <p className="truncate font-mono text-xs text-subtle">{step.detail}</p>
             </div>
-            <span data-ai-pulse aria-hidden="true" className="ml-auto size-1.5 rounded-full bg-white/15" />
+            <span data-ai-pulse aria-hidden="true" className="ml-auto size-1.5 rounded-full bg-fg/15" />
           </div>
           {i < aiPipeline.length - 1 && (
             <span aria-hidden="true" className="absolute left-[2.3rem] top-full block h-3 w-px overflow-hidden bg-line-strong">
@@ -54,7 +54,7 @@ function ChatDemo() {
         </span>
       </figcaption>
       <div className="space-y-4 p-5">
-        <p className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-white/[0.06] px-4 py-3 text-sm">{DEMO_PROMPT}</p>
+        <p className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-fg/[0.06] px-4 py-3 text-sm">{DEMO_PROMPT}</p>
         <div className="flex gap-3">
           <span aria-hidden="true" className="grid size-7 shrink-0 place-items-center rounded-full bg-accent/15 text-accent">
             <Sparkles className="size-3.5" />
@@ -96,7 +96,7 @@ export default function AIIntegration() {
           const node = step.querySelector("[data-ai-node]");
           const pulse = step.querySelector("[data-ai-pulse]");
           const link = step.querySelector("[data-ai-link]");
-          tl.to(node, { backgroundColor: "#ff6a3d", color: "#1a0a04", borderColor: "#ff6a3d", duration: 0.3 }, i * 0.5)
+          tl.to(node, { backgroundColor: "#d4430f", color: "#ffffff", borderColor: "#d4430f", duration: 0.3 }, i * 0.5)
             .to(pulse, { backgroundColor: "#3ddc97", duration: 0.3 }, i * 0.5);
           if (link) tl.fromTo(link, { scaleY: 0 }, { scaleY: 1, duration: 0.3, ease: "none" }, i * 0.5 + 0.2);
         });

@@ -16,22 +16,22 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "radial-gradient(circle at 85% 10%, rgba(255,106,61,0.28), transparent 45%), #0a0a0a",
-          color: "#f5f5f5",
+          background: "radial-gradient(circle at 85% 10%, rgba(212,67,15,0.18), transparent 45%), #f7f6f2",
+          color: "#111111",
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26, color: "#9ca3af" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 26, color: "#5b6070" }}>
           <div
             style={{
               width: 56,
               height: 56,
               borderRadius: 999,
-              border: "1px solid rgba(255,255,255,0.2)",
+              border: "1px solid rgba(17,17,17,0.2)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#f5f5f5",
+              color: "#111111",
               fontSize: 22,
             }}
           >
@@ -41,9 +41,9 @@ export default function OpengraphImage() {
         </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 92, fontWeight: 700, letterSpacing: -4, lineHeight: 1 }}>
           <span>{profile.role}</span>
-          <span style={{ color: "#ff6a3d" }}>& {profile.secondaryRole}</span>
+          <span style={{ color: "#d4430f" }}>& {profile.secondaryRole}</span>
         </div>
-        <div style={{ display: "flex", fontSize: 28, color: "#9ca3af" }}>Vue.js · Nuxt.js · React · Next.js · AI integration</div>
+        <div style={{ display: "flex", fontSize: 28, color: "#5b6070" }}>Vue.js · Nuxt.js · React · Next.js · AI integration</div>
       </div>
     ),
     size

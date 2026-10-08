@@ -8,7 +8,7 @@ import { cn, isFinePointer, pad, prefersReducedMotion } from "@/lib/utils";
 import SectionTitle from "@/components/ui/SectionTitle";
 
 // Brand-ish dots for the framework card; everything else uses the neutral palette.
-const DOTS = { "Vue.js": "#42b883", "Nuxt.js": "#00dc82", React: "#61dafb", "Next.js": "#f5f5f5" };
+const DOTS = { "Vue.js": "#42b883", "Nuxt.js": "#00dc82", React: "#61dafb", "Next.js": "#111111" };
 
 const LAYOUT = {
   frameworks: "md:col-span-2 lg:col-span-4 lg:row-span-2",
@@ -70,7 +70,7 @@ function SkillCard({ group, index }) {
             {group.items.map((item) => (
               <li
                 key={item}
-                className="rounded-full border border-line bg-white/[0.02] px-3.5 py-1.5 text-sm text-fg/90 transition-colors duration-300 hover:border-accent/50 hover:bg-accent/10"
+                className="rounded-full border border-line bg-fg/[0.02] px-3.5 py-1.5 text-sm text-fg/90 transition-colors duration-300 hover:border-accent/50 hover:bg-accent/10"
               >
                 {item}
               </li>
@@ -80,7 +80,7 @@ function SkillCard({ group, index }) {
 
         {group.id === "motion" && (
           <svg aria-hidden="true" viewBox="0 0 200 80" className="mt-6 w-full text-accent" fill="none">
-            <path d="M0 79.5H200M0.5 0V80" stroke="rgb(255 255 255 / 0.08)" />
+            <path d="M0 79.5H200M0.5 0V80" stroke="rgb(17 17 17 / 0.08)" />
             <path
               d="M0 80C60 80 70 2 200 2"
               stroke="currentColor"

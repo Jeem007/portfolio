@@ -86,7 +86,7 @@ export default function Projects() {
                     "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors duration-300",
                     active
                       ? "border-fg bg-fg text-page"
-                      : "border-line-strong text-muted hover:border-white/30 hover:text-fg"
+                      : "border-line-strong text-muted hover:border-fg/30 hover:text-fg"
                   )}
                 >
                   {c}

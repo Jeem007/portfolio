@@ -50,6 +50,7 @@ export default async function ProjectPage({ params }) {
     ["Category", project.category],
     ["Year", project.year],
     ["Role", project.role],
+    ...(project.facts || []),
   ].filter(([, v]) => v);
 
   return (
@@ -119,6 +120,31 @@ export default async function ProjectPage({ params }) {
                 </ul>
               </Block>
             )}
+            {project.steps?.length > 0 && (
+              <Block title="How it works">
+                <ol className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-3">
+                  {project.steps.map((s, i) => (
+                    <li key={s.title} className="bg-surface p-5">
+                      <span className="font-mono text-xs text-accent">{pad(i + 1)}</span>
+                      <p className="mt-3 font-medium text-fg">{s.title}</p>
+                      <p className="mt-1.5 text-sm leading-relaxed">{s.text}</p>
+                    </li>
+                  ))}
+                </ol>
+              </Block>
+            )}
+            {project.features?.length > 0 && (
+              <Block title="Features">
+                <ul className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+                  {project.features.map((f) => (
+                    <li key={f.title} className="border-l border-accent/40 pl-4">
+                      <p className="font-medium text-fg">{f.title}</p>
+                      <p className="mt-1 text-base leading-relaxed">{f.text}</p>
+                    </li>
+                  ))}
+                </ul>
+              </Block>
+            )}
             {project.challenges && (
               <Block title="Challenge">
                 <p>{project.challenges}</p>
@@ -137,13 +163,32 @@ export default async function ProjectPage({ params }) {
           </div>
 
           {project.images?.length > 0 && (
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              {project.images.map((img) => (
-                <div key={img.src} className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-line">
-                  <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
-                </div>
-              ))}
-            </div>
+            <section className="border-t border-line pt-10">
+              <h2 className="eyebrow">Screens</h2>
+              <div className="mt-8 grid items-start gap-x-6 gap-y-10 md:grid-cols-2">
+                {project.images.map((img) => (
+                  <figure key={img.src} className={img.wide ? "md:col-span-2" : undefined}>
+                    <div className="overflow-hidden rounded-3xl border border-line bg-surface">
+                      {img.width ? (
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          sizes={img.wide ? "100vw" : "(min-width: 768px) 50vw, 100vw"}
+                          className="h-auto w-full"
+                        />
+                      ) : (
+                        <div className="relative aspect-[4/3]">
+                          <Image src={img.src} alt={img.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+                        </div>
+                      )}
+                    </div>
+                    {img.caption && <figcaption className="mt-3 text-sm text-subtle">{img.caption}</figcaption>}
+                  </figure>
+                ))}
+              </div>
+            </section>
           )}
 
           <Link

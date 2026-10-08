@@ -109,7 +109,7 @@ export default function ParticleMorph({ count = 7000, pointer, intro, animate = 
       fragmentShader,
       transparent: true,
       depthWrite: false,
-      blending: THREE.AdditiveBlending,
+      blending: THREE.NormalBlending,
       uniforms: {
         uTime: { value: 0 },
         uMorph: { value: 0 },
@@ -118,8 +118,8 @@ export default function ParticleMorph({ count = 7000, pointer, intro, animate = 
         uPixelRatio: { value: gl.getPixelRatio() },
         uMouse: { value: new THREE.Vector3(99, 99, 0) },
         uMouseStrength: { value: 0 },
-        uColor: { value: new THREE.Color("#e9e9ee") },
-        uAccent: { value: new THREE.Color("#ff6a3d") },
+        uColor: { value: new THREE.Color("#2a2a30") },
+        uAccent: { value: new THREE.Color("#d4430f") },
       },
     });
 

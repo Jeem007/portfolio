@@ -49,16 +49,14 @@ export default function Navbar({ home = true }) {
         <nav aria-label="Primary" className="container-x flex h-16 items-center justify-between md:h-[4.5rem]">
           <Link
             href="/"
-            className="group flex items-center gap-3 rounded-full"
+            className="group flex items-baseline rounded-md text-[1.6rem] font-semibold leading-none tracking-[-0.05em] md:text-[1.75rem]"
             aria-label={`${profile.name} — home`}
           >
-            <span className="grid size-9 place-items-center rounded-full border border-line-strong bg-surface font-mono text-xs font-semibold tracking-tight transition-colors group-hover:border-accent/60">
-              {profile.initials}
-            </span>
-            <span className="hidden text-sm font-medium tracking-tight sm:block">
-              {profile.name}
-              <span className="ml-2 font-mono text-[0.7rem] text-subtle">/ frontend</span>
-            </span>
+            {profile.shortName}
+            <span
+              aria-hidden="true"
+              className="ml-[0.06em] inline-block size-[0.22em] rounded-full bg-accent transition-transform duration-500 ease-[var(--ease-expo)] group-hover:-translate-y-[0.35em] group-hover:scale-125"
+            />
           </Link>
 
           <ul className="hidden items-center gap-1 rounded-full border border-line bg-surface/60 p-1 backdrop-blur-md lg:flex">
@@ -69,7 +67,7 @@ export default function Navbar({ home = true }) {
                   aria-current={active === link.id ? "true" : undefined}
                   className={cn(
                     "relative block rounded-full px-4 py-2 text-[0.8rem] transition-colors duration-300",
-                    active === link.id ? "bg-white/[0.07] text-fg" : "text-muted hover:text-fg"
+                    active === link.id ? "bg-fg/[0.07] text-fg" : "text-muted hover:text-fg"
                   )}
                 >
                   {active === link.id && (

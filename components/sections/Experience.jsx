@@ -17,7 +17,7 @@ function RolePanel({ item, index }) {
       {/* Oversized index in the background */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-10 -right-4 select-none text-[clamp(10rem,22vw,20rem)] font-semibold leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgb(255_255_255/0.06)]"
+        className="pointer-events-none absolute -bottom-10 -right-4 select-none text-[clamp(10rem,22vw,20rem)] font-semibold leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgb(17_17_17/0.06)]"
       >
         {pad(index + 1)}
       </span>
@@ -81,35 +81,38 @@ export default function Experience() {
       const viewport = root.current.querySelector("[data-xp-viewport]");
       const track = root.current.querySelector("[data-xp-track]");
       const bar = root.current.querySelector("[data-xp-progress]");
-      const mm = gsap.matchMedia();
 
-      // Desktop: pin the section and translate the track as the page scrolls.
-      // Touch / small screens keep native horizontal swipe with snap points.
-      mm.add("(min-width: 1024px) and (hover: hover)", () => {
-        gsap.set(viewport, { overflow: "visible" });
-        const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
-        const range = { trigger: root.current, start: "top top", end: () => `+=${distance()}`, invalidateOnRefresh: true };
+      // Pin the section and translate the track as the page scrolls, on every screen size.
+      // If the section is taller than the viewport (phones), pin once its bottom reaches
+      // the bottom of the screen so the whole panel has been read before it slides.
+      gsap.set(viewport, { overflow: "visible" });
+      const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth);
+      const range = {
+        trigger: root.current,
+        start: () => (root.current.offsetHeight > window.innerHeight ? "bottom bottom" : "top top"),
+        end: () => `+=${distance()}`,
+        invalidateOnRefresh: true,
+      };
 
-        const tween = gsap.to(track, {
-          x: () => -distance(),
-          ease: "none",
-          scrollTrigger: { ...range, pin: true, scrub: 0.8, anticipatePin: 1 },
-        });
-        gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { ...range, scrub: true } });
+      const tween = gsap.to(track, {
+        x: () => -distance(),
+        ease: "none",
+        scrollTrigger: { ...range, pin: true, scrub: 0.8, anticipatePin: 1 },
+      });
+      gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { ...range, scrub: true } });
 
-        // Panels ease in as they travel into view.
-        gsap.utils.toArray(track.querySelectorAll("[data-xp-panel]")).forEach((panel) => {
-          gsap.fromTo(
-            panel,
-            { opacity: 0.25, scale: 0.94 },
-            {
-              opacity: 1,
-              scale: 1,
-              ease: "none",
-              scrollTrigger: { trigger: panel, containerAnimation: tween, start: "left 95%", end: "left 55%", scrub: true },
-            }
-          );
-        });
+      // Panels ease in as they travel into view.
+      gsap.utils.toArray(track.querySelectorAll("[data-xp-panel]")).forEach((panel) => {
+        gsap.fromTo(
+          panel,
+          { opacity: 0.25, scale: 0.94 },
+          {
+            opacity: 1,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: { trigger: panel, containerAnimation: tween, start: "left 95%", end: "left 55%", scrub: true },
+          }
+        );
       });
     },
     { scope: root }
@@ -133,7 +136,7 @@ export default function Experience() {
           Where I&apos;ve <span className="font-serif font-normal italic text-accent">worked</span>
         </h2>
         <p className="mt-6 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.18em] text-subtle">
-          Swipe <ArrowRight className="size-4 text-accent" aria-hidden="true" />
+          Scroll <ArrowRight className="size-4 text-accent" aria-hidden="true" />
         </p>
       </div>
 
@@ -184,7 +187,7 @@ export default function Experience() {
         </div>
       </div>
 
-      <div aria-hidden="true" className="container-x absolute inset-x-0 bottom-10 hidden lg:block">
+      <div aria-hidden="true" className="container-x absolute inset-x-0 bottom-10">
         <div className="h-px w-full bg-line">
           <div data-xp-progress className="h-full origin-left scale-x-0 bg-accent" />
         </div>

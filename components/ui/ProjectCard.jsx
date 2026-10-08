@@ -57,7 +57,7 @@ export default function ProjectCard({ project, index, variant = "grid", priority
             className={featured ? "aspect-[16/10]" : "aspect-[4/3]"}
             sizes={featured ? "(min-width: 1024px) 58vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
           />
-          <span className="absolute left-5 top-5 rounded-full border border-white/10 bg-black/40 px-3 py-1 font-mono text-[0.7rem] text-fg/80 backdrop-blur-md">
+          <span className="absolute left-5 top-5 rounded-full border border-fg/10 bg-surface/70 px-3 py-1 font-mono text-[0.7rem] text-fg/80 backdrop-blur-md">
             {meta}
           </span>
           {featured && (

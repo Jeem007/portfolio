@@ -4,18 +4,18 @@
 /*  Design tokens                                                      */
 /* ------------------------------------------------------------------ */
 @theme {
-  --color-ink: #080808;
-  --color-page: #0a0a0a;
-  --color-surface: #111111;
-  --color-raised: #151515;
-  --color-line: rgb(255 255 255 / 0.08);
-  --color-line-strong: rgb(255 255 255 / 0.14);
-  --color-fg: #f5f5f5;
-  --color-muted: #9ca3af;
-  --color-subtle: #8b919c;
-  --color-accent: #ff6a3d;
-  --color-accent-soft: #ff8a63;
-  --color-accent-ink: #1a0a04;
+  --color-ink: #efede8;
+  --color-page: #f7f6f2;
+  --color-surface: #ffffff;
+  --color-raised: #f0eee9;
+  --color-line: rgb(17 17 17 / 0.09);
+  --color-line-strong: rgb(17 17 17 / 0.16);
+  --color-fg: #111111;
+  --color-muted: #5b6070;
+  --color-subtle: #6b7080;
+  --color-accent: #d4430f;
+  --color-accent-soft: #e85a24;
+  --color-accent-ink: #ffffff;
 
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
@@ -48,7 +48,7 @@
 @layer base {
   html {
     background: var(--color-page);
-    color-scheme: dark;
+    color-scheme: light;
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 5rem;
   }
@@ -124,8 +124,8 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.045) 1px, transparent 1px);
+    linear-gradient(to right, rgb(17 17 17 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(17 17 17 / 0.05) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -142,7 +142,7 @@ html.has-custom-cursor, html.has-custom-cursor * { cursor: none !important; }
 }
 
 @utility glass {
-  background: rgb(20 20 20 / 0.55);
+  background: rgb(255 255 255 / 0.65);
   border: 1px solid var(--color-line);
   backdrop-filter: blur(14px) saturate(140%);
   -webkit-backdrop-filter: blur(14px) saturate(140%);

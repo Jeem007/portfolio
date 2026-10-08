@@ -10,10 +10,17 @@ import MagneticButton from "@/components/ui/MagneticButton";
 import { SocialIcon } from "@/components/ui/Icons";
 import HeroVisual from "./HeroVisual";
 
+// Name is the headline: first names on one line, surname in the accent serif below.
+const nameParts = profile.name.split(" ");
 const HEADLINE = [
-  [{ text: profile.role }],
-  [{ text: "&", className: "font-serif font-normal italic text-accent" }, { text: "Creative" }],
-  [{ text: "Web Engineer" }],
+  [{ text: nameParts.slice(0, -1).join(" ") }],
+  [{ text: nameParts.at(-1), className: "font-serif font-normal italic text-accent pr-[0.08em]" }],
+];
+
+const ROLE = [
+  { text: profile.role },
+  { text: "&", className: "font-serif italic text-accent" },
+  { text: profile.secondaryRole },
 ];
 
 function Words({ segments }) {
@@ -95,17 +102,15 @@ export default function Hero() {
             {profile.currentTitle} at {profile.currentCompany}
           </p>
 
-          <p data-hero-anim data-hero-intro className="mb-3 font-mono text-sm text-muted">
-            Hello, I&apos;m <span className="text-fg">{profile.name}</span>
+          <p data-hero-anim data-hero-intro className="mb-4 font-mono text-sm text-muted">
+            Hello, I&apos;m
           </p>
 
           <h1
             id="hero-title"
-            className="text-[clamp(2.6rem,4.4vw,4.6rem)] font-semibold leading-[0.98] tracking-[-0.045em]"
+            className="text-[clamp(3.25rem,16vw,6.5rem)] font-semibold leading-[0.9] tracking-[-0.05em] lg:text-[clamp(4.75rem,7.4vw,8.25rem)]"
           >
-            <span className="sr-only">
-              {profile.name} — {profile.role} and {profile.secondaryRole}
-            </span>
+            <span className="sr-only">{profile.name}</span>
             <span aria-hidden="true">
               {HEADLINE.map((segments, i) => (
                 <span key={i} data-hero-anim data-hero-line className="block">
@@ -115,7 +120,20 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p data-hero-anim data-hero-copy className="mt-7 max-w-xl text-pretty text-base leading-relaxed text-muted md:text-lg">
+          <p
+            data-hero-anim
+            data-hero-line
+            className="mt-6 text-[clamp(1.2rem,2.1vw,1.85rem)] font-medium leading-snug tracking-[-0.02em] text-fg/85"
+          >
+            <span className="sr-only">
+              {profile.role} and {profile.secondaryRole}
+            </span>
+            <span aria-hidden="true">
+              <Words segments={ROLE} />
+            </span>
+          </p>
+
+          <p data-hero-anim data-hero-copy className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted md:text-lg">
             {profile.headline}
           </p>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { profile, stats, careerStart } from "@/data/portfolio";
+import { profile, projects, stats, careerStart } from "@/data/portfolio";
 import { useGSAP } from "@/lib/gsap";
 import { countUp, fadeUp, parallax } from "@/lib/animations";
 import { yearsSince } from "@/lib/utils";
@@ -11,7 +11,8 @@ export default function About() {
   const root = useRef(null);
   const years = yearsSince(careerStart);
 
-  const resolved = stats.map((s) => ({ ...s, value: s.value === "years" ? years : s.value }));
+  const computed = { years, projects: projects.length };
+  const resolved = stats.map((s) => ({ ...s, value: computed[s.value] ?? s.value }));
 
   useGSAP(
     () => {
@@ -64,7 +65,7 @@ export default function About() {
             <div
               key={s.label}
               data-stat
-              className="group relative flex flex-col-reverse gap-3 border-b border-line py-8 pr-4 odd:border-r md:py-10 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:px-8 lg:first:pl-0"
+              className="group relative flex flex-col-reverse justify-end gap-3 border-b border-line py-8 pr-4 odd:border-r even:pl-5 sm:even:pl-8 md:py-10 lg:border-b-0 lg:border-r lg:last:border-r-0 lg:px-8 lg:first:pl-0"
             >
               <dt className="text-sm leading-snug text-muted">
                 {s.label}

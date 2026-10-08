@@ -53,7 +53,7 @@ export default function HeroVisual({ heroStart }) {
       <div
         aria-hidden="true"
         className={cn(
-          "pointer-events-none absolute inset-0 grid place-items-center font-mono text-[clamp(5rem,14vw,11rem)] font-light tracking-tighter text-white/[0.06] transition-opacity duration-1000",
+          "pointer-events-none absolute inset-0 grid place-items-center font-mono text-[clamp(5rem,14vw,11rem)] font-light tracking-tighter text-fg/[0.06] transition-opacity duration-1000",
           ready ? "opacity-0" : "opacity-100"
         )}
       >
@@ -71,7 +71,7 @@ export default function HeroVisual({ heroStart }) {
       >
         {PHASES.map((p, i) => (
           <li key={p.id} className={cn("flex items-center gap-2 transition-colors duration-700", i === phase ? "text-fg" : "text-subtle/60")}>
-            <span className={cn("h-px transition-all duration-700", i === phase ? "w-6 bg-accent" : "w-3 bg-white/20")} />
+            <span className={cn("h-px transition-all duration-700", i === phase ? "w-6 bg-accent" : "w-3 bg-fg/20")} />
             {p.label}
           </li>
         ))}

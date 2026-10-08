@@ -36,8 +36,8 @@ export default function CustomCursor() {
         gsap.to(ring.current, {
           width: big ? 88 : link ? 52 : 34,
           height: big ? 88 : link ? 52 : 34,
-          backgroundColor: big ? "rgba(255,106,61,0.95)" : link ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0)",
-          borderColor: big ? "rgba(255,106,61,0)" : "rgba(255,255,255,0.35)",
+          backgroundColor: big ? "rgba(212,67,15,0.95)" : link ? "rgba(17,17,17,0.06)" : "rgba(17,17,17,0)",
+          borderColor: big ? "rgba(212,67,15,0)" : "rgba(17,17,17,0.35)",
           duration: 0.45,
           ease: "expo.out",
         });
@@ -88,7 +88,7 @@ export default function CustomCursor() {
       <div ref={dot} className="fixed left-0 top-0 size-1.5 rounded-full bg-fg opacity-0" />
       <div
         ref={ring}
-        className="fixed left-0 top-0 grid size-[34px] place-items-center rounded-full border border-white/35 opacity-0"
+        className="fixed left-0 top-0 grid size-[34px] place-items-center rounded-full border border-fg/35 opacity-0"
       >
         <span ref={label} className="font-mono text-[0.65rem] font-semibold tracking-[0.2em] text-accent-ink opacity-0">
           VIEW

@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 
 const variants = {
   primary:
-    "bg-accent text-accent-ink hover:bg-accent-soft shadow-[0_0_0_1px_rgb(255_106_61/0.4),0_10px_40px_-10px_rgb(255_106_61/0.55)]",
-  ghost: "border border-line-strong bg-white/[0.02] text-fg hover:border-white/30 hover:bg-white/[0.05]",
+    "bg-accent text-accent-ink hover:bg-accent-soft shadow-[0_0_0_1px_rgb(212_67_15/0.4),0_10px_40px_-10px_rgb(212_67_15/0.55)]",
+  ghost: "border border-line-strong bg-fg/[0.02] text-fg hover:border-fg/30 hover:bg-fg/[0.05]",
 };
 
 /** Link-styled button with an arrow that slides out and back in on hover. */
@@ -35,7 +35,7 @@ export default function Button({
         aria-hidden="true"
         className={cn(
           "relative grid size-8 place-items-center overflow-hidden rounded-full",
-          variant === "primary" ? "bg-accent-ink/90 text-accent" : "bg-white/10 text-fg"
+          variant === "primary" ? "bg-accent-ink/90 text-accent" : "bg-fg/10 text-fg"
         )}
       >
         <Icon className="size-4 transition-transform duration-500 ease-[var(--ease-expo)] group-hover:translate-x-5 group-hover:-translate-y-5" />

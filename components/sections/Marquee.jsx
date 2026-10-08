@@ -46,12 +46,12 @@ function Row({ items, outline, reverse, speed }) {
             className={cn(
               "flex shrink-0 items-center whitespace-nowrap font-semibold uppercase tracking-[-0.03em]",
               outline
-                ? "text-[clamp(1.5rem,3.5vw,3rem)] text-transparent [-webkit-text-stroke:1px_rgb(255_255_255/0.22)]"
+                ? "text-[clamp(1.5rem,3.5vw,3rem)] text-transparent [-webkit-text-stroke:1px_rgb(17_17_17/0.22)]"
                 : "text-[clamp(2.5rem,7vw,6.5rem)] text-fg"
             )}
           >
             <span className="px-[0.35em]">{item}</span>
-            <span aria-hidden="true" className={cn("text-[0.5em]", outline ? "text-white/20" : "text-accent")}>
+            <span aria-hidden="true" className={cn("text-[0.5em]", outline ? "text-fg/20" : "text-accent")}>
               ✦
             </span>
           </span>
